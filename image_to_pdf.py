@@ -16,6 +16,8 @@ def convert_images_from_dir_to_pdf(dirpath: str):
     filepaths = [dirpath+os.sep+filename for filename in os.listdir(dirpath)]
 
     for filepath in filepaths:
+        if filepath.endswith('.pdf'):
+            continue
         if imghdr.what(filepath):
             convert_image_to_pdf(filepath)
             os.remove(filepath)
